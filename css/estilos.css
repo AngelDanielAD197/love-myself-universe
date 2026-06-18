@@ -138,8 +138,18 @@ body.dashboard-universo {
 .header-grafo h1 {
     font-family: 'Comfortaa', sans-serif;
     font-size: 2.2rem;
-    color: #ffffff;
+    color: #ffffff !important; /* El !important fuerza a Chrome a ignorar cualquier otra herencia */
     font-weight: 700;
+    background: transparent !important; /* Evita que intente renderizar fondos raros en otros motores */
+    -webkit-text-fill-color: #ffffff !important; /* Blindaje extra para navegadores WebKit/Chrome */
+}
+.header-grafo h2 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.4rem; /* Un tamaño menor para mantener la jerarquía de subtítulo */
+    font-weight: 700;
+    color: #ffffff !important;
+    background: transparent !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 .subtitulo-tecnico {
     font-size: 0.85rem;
@@ -158,7 +168,21 @@ body.dashboard-universo {
     border-radius: 10px;
     z-index: 10;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Añadido para soporte en Safari/Chrome viejo */
     width: 180px;
+    
+    /* CONTROL DE DESBORDE CRUCIAL */
+    max-height: calc(100vh - 230px); /* Evita dinámicamente que baje hasta la terminal */
+    overflow-y: auto; /* Si el texto se desborda, genera un scrollbar interno */
+}
+
+/* Ocultar la barra de scroll del panel de filtros para que no rompa la estética mística */
+.panel-filtros::-webkit-scrollbar {
+    width: 5px;
+}
+.panel-filtros::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
 }
 .panel-filtros h3 {
     font-size: 0.85rem;
