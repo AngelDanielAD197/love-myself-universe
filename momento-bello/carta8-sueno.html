@@ -231,7 +231,17 @@
             .chat-contenido {
                 max-height: 220px; /* Limita la altura del chat en móvil para que no sea infinito */
             }
-        }
+            /* Adaptación de imágenes responsivas */
+            .cuerpo-lectura img, 
+            .carta-contenido-layout img {
+                max-width: 100%;    /* Impide que la imagen se salga del contenedor */
+                height: auto;       /* Mantiene la proporción de aspecto sin deformarla */
+                display: block;     /* Evita espacios en blanco indeseados abajo */
+                margin: 25px auto;  /* Centra la imagen y le da espacio arriba y abajo */
+                border-radius: 10px; /* Bordes redondeados elegantes que combinan con la interfaz */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra suave acorde al diseño */
+            }
+                    
     </style>
 </head>
 <body>
@@ -293,10 +303,12 @@
                     <p>Antes de que terminara el año, salimos por primera vez. No recuerdo bien qué hicimos pero sí recuerdo algo de esa primera salida y es lo que me dijiste luego de que yo te platicara sobre mis sueños: <em>"Espero que todas tus metas y sueños se cumplan, luches por lo que más te gusta y seas feliz"</em>. Luego de eso nos tomamos una fotografía para el recuerdo.</p>
 
                     <!-- Bloque de Imagen Incorporado -->
-                    <div class="contenedor-imagen">
-                        <img src="imagenes/primera-salida.jpg" alt="Fotografía del recuerdo con Diana, Diciembre 2021">
-                        <div class="caption-imagen">Nuestra primera fotografía juntos para el recuerdo.</div>
-                    </div>
+                    <figure style="margin: 30px 0; text-align: center;">
+                        <img src="imagenes/primera-salida.jpg" alt="Primera foto juntos">
+                        <figcaption style="color: #6a6575; font-size: 0.85rem; font-style: italic; margin-top: 8px;">
+                            Nuestra primera fotografía juntos para el recuerdo.
+                        </figcaption>
+                    </figure>
 
                     <div class="quote-bts">
                         Wild Flower — RM
