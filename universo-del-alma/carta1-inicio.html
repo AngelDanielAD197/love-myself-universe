@@ -128,8 +128,133 @@
             height: 80px;
             border: none;
         }
+    <style>
+        /* ==========================================================================
+           1. ESTILOS BASE Y DESKTOP
+           ========================================================================== */
+        body {
+            background-color: #0b0914;
+            color: #d1cbdc;
+            font-family: 'Merriweather', Georgia, serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden; 
+        }
 
-        /* Botones de Navegación del Footer (Nuevos Estilos Homologados) */
+        /* Workspace de Tres Paneles */
+        .workspace-tres-paneles {
+            display: grid;
+            grid-template-columns: 280px 1fr 400px; 
+            height: 100vh;
+            box-sizing: border-box;
+            background: #0b0914;
+        }
+
+        /* Estilo para los Paneles Laterales */
+        .panel-lateral {
+            background: rgba(20, 17, 34, 0.75);
+            border: 1px solid rgba(114, 9, 183, 0.15);
+            margin: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .panel-titulo {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #a393eb;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        /* PANEL IZQUIERDO: Interfaz del Chat */
+        .chat-contenido {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            font-family: sans-serif;
+            max-height: 300px;
+        }
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.2);
+        }
+        .chat-input-area input {
+            width: 100%;
+            padding: 10px;
+            background: #141122;
+            border: 1px solid rgba(114, 9, 183, 0.4);
+            border-radius: 6px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        /* PANEL CENTRAL: La Carta con Scroll Independiente */
+        .panel-central-carta {
+            overflow-y: auto;
+            padding: 40px;
+            margin: 15px 0;
+            box-sizing: border-box;
+        }
+        .carta-contenido-layout {
+            max-width: 680px; 
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+        .header-lectura h1 {
+            font-size: 2.3rem;
+            color: #48cae4;
+            margin: 5px 0;
+        }
+        .quote-bts {
+            font-style: italic;
+            color: #a393eb;
+            border-left: 3px solid #7209b7;
+            padding-left: 15px;
+            margin: 35px 0;
+            background: rgba(114, 9, 183, 0.05);
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* PANEL DERECHO: Lista de Música */
+        .musica-contenido {
+            flex: 1;
+            padding: 20px; 
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .spotify-wrapper {
+            width: 100%;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #141122;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+        .spotify-wrapper iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
+
+        /* Botones de Navegación del Footer */
         .btn-navegacion {
             display: flex;
             justify-content: space-between;
@@ -175,7 +300,62 @@
         .btn-centro:hover {
             color: #a393eb;
         }
+
+        /* ==========================================================================
+           2. ADAPTACIÓN RESPONSIVA PARA MÓVILES Y TABLETS (< 900px)
+           ========================================================================== */
+        @media screen and (max-width: 900px) {
+            body {
+                overflow-y: auto !important; /* Habilita el scroll vertical general */
+                height: auto;
+            }
+
+            .workspace-tres-paneles {
+                display: flex;
+                flex-direction: column; /* Apila los paneles verticalmente */
+                height: auto;
+                min-height: 100vh;
+            }
+
+            /* Reordenamos con flex order: primero la carta, luego el asistente, luego la música */
+            .panel-central-carta {
+                order: 1;
+                padding: 20px 15px;
+                margin: 0;
+                overflow-y: visible; /* Fluye naturalmente con el scroll general */
+            }
+
+            .carta-contenido-layout {
+                font-size: 1rem; /* Tamaño de letra más cómodo para celulares */
+                line-height: 1.7;
+            }
+
+            .header-lectura h1 {
+                font-size: 1.7rem;
+            }
+
+            /* Panel del Chat */
+            .workspace-tres-paneles > aside:nth-of-type(1) {
+                order: 2;
+                margin: 15px;
+            }
+
+            /* Panel de Música */
+            .workspace-tres-paneles > aside:nth-of-type(2) {
+                order: 3;
+                margin: 15px;
+            }
+
+            .panel-lateral {
+                height: auto;
+            }
+
+            .chat-contenido {
+                max-height: 220px; /* Limita la altura del chat en móvil para que no sea infinito */
+            }
+        }
     </style>
+
 </head>
 <body>
 
